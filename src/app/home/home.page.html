@@ -1,0 +1,45 @@
+<ion-header translucent color="dark">
+  <ion-toolbar color="dark">
+    <ion-title class="title">Wallpaper App</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment 
+    value="home" 
+    scrollable="true"
+    [(ngModel)]="segmentModel"
+    (ionChange)="segmentChanged($event)" 
+    color="dark">
+      <ion-segment-button value="home">
+        <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="search">
+        <ion-icon name="search"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="segmentModel === 'home'">
+    <img *ngFor="let item of resultStart" class="img" [src]="item.src['tiny']" button [routerLink]="item.id">
+    <ion-infinite-scroll (ionInfinite)="onStart(true, $event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more images ....">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div *ngIf="segmentModel === 'search'">
+      <ion-toolbar>
+        <ion-searchbar showCancelButton="focus" cancelButtonText="Cancel" (ionChange)="onSearchChange($event)"></ion-searchbar>
+      </ion-toolbar>
+      <img *ngFor="let item of result" class="img" [src]="item" button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+     <p class="pexels"> Photos provided by Pexels </p>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

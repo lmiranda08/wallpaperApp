@@ -51,17 +51,13 @@ export class DataService implements OnInit {
     );
   }
 
-  detailImage( value ){
+  detailImage( value: string ){
     const headers = new HttpHeaders({
       'Authorization': '563492ad6f9170000100000188c7bc83f6f5407aaf84ebe169e7a947'
     });
-    return this.http.get(`${this.apiFoto}${value}`, {headers})
-    .pipe(
-      map(
-        data => data['photos']
-      )
-    );
+    return this.http.get(`${this.apiFoto}${value}`, {headers});
   }
+
   
   searchCurated(page = Math.floor(Math.random()*101)){
     const headers = new HttpHeaders({

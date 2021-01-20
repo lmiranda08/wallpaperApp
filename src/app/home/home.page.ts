@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 
 @Component({
@@ -22,10 +21,8 @@ export class HomePage implements OnInit{
     piccasoOptions: { } // If this is not provided, an exception will be triggered
 };
 
-/* PhotoViewer.show('http://my_site.com/my_image.jpg', 'Optional Title', options); */
-
   constructor( private data: DataService,
-               private photoViewer: PhotoViewer
+               
               ) {}
 
   ngOnInit(){
@@ -60,15 +57,13 @@ export class HomePage implements OnInit{
       this.page += Math.floor(Math.random()*101);
     }
     this.data.searchCurated(this.page).subscribe( (res:any) => {
-/*       for (let index = 0; index < res.length; index++) { */
-/*         const element = res[index].src['tiny'];
-        this.resultStart.push(element); */
         this.resultStart = res;
-  /*     } */
       if( event ){
         event.target.complete();
       }
     })
   }
+
+
 }
 

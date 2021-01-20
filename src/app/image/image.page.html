@@ -1,11 +1,21 @@
 <ion-header translucent color="dark">
-<ion-toolbar color="dark">
+  <ion-toolbar color="dark">
     <ion-title class="title">Detail Image</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div>
-    <img class="img" [src]="image">
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <img class="img" [src]="img" (onclick)="showImage(img)">
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-title class="title">
+        {{ photo.photographer }}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

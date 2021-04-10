@@ -32,7 +32,7 @@
       <ion-toolbar>
         <ion-searchbar showCancelButton="focus" cancelButtonText="Cancel" (ionChange)="onSearchChange($event)"></ion-searchbar>
       </ion-toolbar>
-      <img *ngFor="let item of result" class="img" [src]="item" button [routerLink]="item.id">
+      <img *ngFor="let item of result" class="img" [src]="item.src['tiny']" button [routerLink]="item.id">
   </div>
 </ion-content>
 

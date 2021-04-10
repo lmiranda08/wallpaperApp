@@ -23,20 +23,19 @@ export class ImagePage implements OnInit {
     const index = this.route.snapshot.paramMap.get('index');
     this.data.detailImage(index).subscribe( res => {
       this.photo = res;
-      this.img = res.src["tiny"];
+      this.img = res["src"]["tiny"];
     })
 
   }
 
   showImage(img: string){
     const options = {
-      share: true, // default is false
-      closeButton: true, // default is true
-      copyToReference: true, // default is false
-      headers: '',  // If this is not provided, an exception will be triggered
-      piccasoOptions: { } // If this is not provided, an exception will be triggered
+      share: true,
+      closeButton: true,
+      copyToReference: true,
+      headers: '',
+      piccasoOptions: { }
   };
-
     this.photoViewer.show(img, 'Show the image', options)
   }
 

@@ -44,8 +44,8 @@ export class HomePage implements OnInit{
         this.result = [];
         this.data.searchImage(searchValue).subscribe( res => {
           for (let index = 0; index < res.length; index++) {
-            const element = res[index].src['tiny'];
-            this.result.push(element)
+            const element = res[index];
+            this.result.push(element);
           }
         })
       }
